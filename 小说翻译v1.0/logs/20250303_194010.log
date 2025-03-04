@@ -1,0 +1,28 @@
+2025-03-03 19:40:10,581 - Main - INFO - [Main] 应用程序初始化开始
+2025-03-03 19:40:10,637 - ConfigManager - INFO - 启动配置验证流程
+2025-03-03 19:40:10,637 - ConfigManager - INFO - 正在读取API密钥文件: api_key.txt
+2025-03-03 19:40:10,637 - ConfigManager - ERROR - API密钥文件内容为空
+2025-03-03 19:40:10,637 - ConfigManager - ERROR - 读取API密钥时发生未预期错误
+Traceback (most recent call last):
+  File "config\config_manager.py", line 49, in read_api_key
+    raise ValueError("API密钥文件内容为空")
+ValueError: API密钥文件内容为空
+2025-03-03 19:40:10,638 - ConfigManager - CRITICAL - 密钥格式错误：API密钥文件内容为空
+2025-03-03 19:40:11,808 - Main - CRITICAL - [Main] 初始化失败
+Traceback (most recent call last):
+  File "config\config_manager.py", line 78, in validate_config
+    key = read_api_key()
+  File "config\config_manager.py", line 49, in read_api_key
+    raise ValueError("API密钥文件内容为空")
+ValueError: API密钥文件内容为空
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main.py", line 62, in __init__
+    self.api_key = validate_config()
+                   ~~~~~~~~~~~~~~~^^
+  File "config\config_manager.py", line 92, in validate_config
+    exit(1)
+    ^^^^
+NameError: name 'exit' is not defined
